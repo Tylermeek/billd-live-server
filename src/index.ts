@@ -9,28 +9,12 @@ import { connectRedis } from '@/config/redis';
 import { createRedisPubSub } from '@/config/redis/pub';
 import { MYSQL_CONFIG } from '@/config/secret';
 import { PROJECT_ENV, PROJECT_NAME, PROJECT_PORT } from '@/constant';
-import {
-  chalkERROR,
-  chalkINFO,
-  chalkSUCCESS,
-  chalkWARN,
-} from '@/utils/chalkTip';
+import { chalkERROR, chalkSUCCESS, chalkWARN } from '@/utils/chalkTip';
 
 import { getIpAddress } from './utils';
 
 const start = performance.now();
 async function main() {
-  function adLog() {
-    console.log();
-    console.log(chalkINFO(`作者微信: shuisheng9905`));
-    console.log(chalkINFO(`付费课程: https://www.hsslive.cn/article/151`));
-    console.log(
-      chalkINFO(
-        `欢迎PR:   billd-live目前只有作者一人开发，难免有不足的地方，欢迎提PR或Issue`
-      )
-    );
-    console.log();
-  }
   try {
     await Promise.all([
       connectMysql(), // 连接mysql
@@ -55,12 +39,9 @@ async function main() {
         `项目启动成功！耗时：${Math.floor(performance.now() - start)}ms`
       )
     );
-
-    adLog();
   } catch (error) {
     console.log(error);
     console.log(chalkERROR('项目启动失败！'));
-    adLog();
   }
 }
 

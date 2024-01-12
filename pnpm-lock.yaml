@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.0.8
     version: 0.0.8
   billd-utils:
-    specifier: ^0.0.20
-    version: 0.0.20(typescript@4.8.4)
+    specifier: ^0.0.22
+    version: 0.0.22(typescript@4.8.4)
   chalk:
     specifier: ^4.1.2
     version: 4.1.2
@@ -1466,6 +1466,7 @@ packages:
   /@commitlint/config-validator@17.1.0:
     resolution: {integrity: sha512-Q1rRRSU09ngrTgeTXHq6ePJs2KrI+axPTgkNYDWSJIuS1Op4w3J30vUfSXjwn5YEJHklK3fSqWNHmBhmTR7Vdg==, tarball: https://registry.npm.taobao.org/@commitlint/config-validator/-/config-validator-17.1.0.tgz}
     engines: {node: '>=v14'}
+    requiresBuild: true
     dependencies:
       '@commitlint/types': 17.0.0
       ajv: 8.11.0
@@ -1488,6 +1489,7 @@ packages:
   /@commitlint/execute-rule@17.0.0:
     resolution: {integrity: sha512-nVjL/w/zuqjCqSJm8UfpNaw66V9WzuJtQvEnCrK4jDw6qKTmZB+1JQ8m6BQVZbNBcwfYdDNKnhIhqI0Rk7lgpQ==, tarball: https://registry.npm.taobao.org/@commitlint/execute-rule/-/execute-rule-17.0.0.tgz}
     engines: {node: '>=v14'}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -1599,6 +1601,7 @@ packages:
   /@commitlint/resolve-extends@17.1.0:
     resolution: {integrity: sha512-jqKm00LJ59T0O8O4bH4oMa4XyJVEOK4GzH8Qye9XKji+Q1FxhZznxMV/bDLyYkzbTodBt9sL0WLql8wMtRTbqQ==, tarball: https://registry.npm.taobao.org/@commitlint/resolve-extends/-/resolve-extends-17.1.0.tgz}
     engines: {node: '>=v14'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': 17.1.0
       '@commitlint/types': 17.0.0
@@ -1642,6 +1645,7 @@ packages:
   /@commitlint/types@17.0.0:
     resolution: {integrity: sha512-hBAw6U+SkAT5h47zDMeOu3HSiD0SODw4Aq7rRNh1ceUmL7GyLKYhPbUvlRWqZ65XjBLPHZhFyQlRaPNz8qvUyQ==, tarball: https://registry.npm.taobao.org/@commitlint/types/-/types-17.0.0.tgz}
     engines: {node: '>=v14'}
+    requiresBuild: true
     dependencies:
       chalk: 4.1.2
     dev: true
@@ -2558,6 +2562,7 @@ packages:
 
   /@types/node@14.18.32:
     resolution: {integrity: sha512-Y6S38pFr04yb13qqHf8uk1nHE3lXgQ30WZbv1mLliV9pt0NjvqdWttLcrOYLnXbOafknVYRHZGoMSpR9UwfYow==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -2978,6 +2983,7 @@ packages:
 
   /ajv@8.11.0:
     resolution: {integrity: sha512-wGgprdCvMalC0BztXvitD2hC04YffAvtsUn93JbGXYLAtCUO4xd17mCCZQxUOItiBwZvJScWo8NIvQMQ71rdpg==}
+    requiresBuild: true
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -3304,8 +3310,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /billd-utils@0.0.20(typescript@4.8.4):
-    resolution: {integrity: sha512-/FfOnbEoVuHpqLRj4NMR3ZYDaZQWt/ajOD2BUhTtwk82bf1swwyqs39kVn02hnYQjlKcKGEeHpCIGEuqhG0nnw==}
+  /billd-utils@0.0.22(typescript@4.8.4):
+    resolution: {integrity: sha512-koOfFzbzSkw6gMYyOKNMzAJHYMhUWHr3swPW48rT7PwZMvBkAtH93bHEVuDCwariWrSwxCGIqozOzp5YaeePqQ==}
     requiresBuild: true
     dependencies:
       '@babel/core': 7.21.5
@@ -3422,6 +3428,7 @@ packages:
   /buildcheck@0.0.3:
     resolution: {integrity: sha512-pziaA+p/wdVImfcbsZLNF32EiWyujlQLwolMqUQE8xpKNOH7KmZQaY8sXN7DGOEzPAElo9QTaeNRfGnf3iOJbA==, tarball: https://registry.npm.taobao.org/buildcheck/-/buildcheck-0.0.3.tgz}
     engines: {node: '>=10.0.0'}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -3958,6 +3965,7 @@ packages:
   /cosmiconfig-typescript-loader@4.1.1(@types/node@14.18.32)(cosmiconfig@7.0.1)(ts-node@10.9.1)(typescript@4.8.4):
     resolution: {integrity: sha512-9DHpa379Gp0o0Zefii35fcmuuin6q92FnLDffzdZ0l9tVd3nEobG3O+MZ06+kuBvFTSVScvNb/oHA13Nd4iipg==, tarball: https://registry.npm.taobao.org/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-4.1.1.tgz}
     engines: {node: '>=12', npm: '>=6'}
+    requiresBuild: true
     peerDependencies:
       '@types/node': '*'
       cosmiconfig: '>=7'
@@ -6093,6 +6101,7 @@ packages:
 
   /json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==, tarball: https://registry.npm.taobao.org/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6791,6 +6800,7 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -7618,6 +7628,7 @@ packages:
   /require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==, tarball: https://registry.npm.taobao.org/require-from-string/-/require-from-string-2.0.2.tgz}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dev: true
     optional: true
 

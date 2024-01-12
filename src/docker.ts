@@ -4,7 +4,6 @@ import './init/initFile';
 
 import { PROJECT_ENV, PROJECT_ENV_ENUM } from '@/constant';
 import { dockerRunMysql } from '@/init/docker/Mysql';
-import { dockerRunRabbitMQ } from '@/init/docker/RabbitMQ';
 import { dockerRunRedis } from '@/init/docker/Redis';
 import { dockerRunSRS } from '@/init/docker/SRS';
 import { dockerIsInstalled } from '@/utils';
@@ -16,7 +15,7 @@ if (flag) {
   dockerRunMysql(PROJECT_ENV !== PROJECT_ENV_ENUM.prod);
   dockerRunRedis(PROJECT_ENV !== PROJECT_ENV_ENUM.prod);
   dockerRunSRS(true);
-  dockerRunRabbitMQ(false);
+  // dockerRunRabbitMQ(false);
 } else {
   console.log(chalkERROR('未安装docker！'));
 }

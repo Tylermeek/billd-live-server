@@ -79,11 +79,12 @@ async function addLive({
       // ]);
       // const { pid } = ffmpegCmd;
       // console.log(chalkWARN('ffmpeg进程pid'), pid);
-      const ffmpegCmd = `ffmpeg -loglevel quiet -readrate 1 -stream_loop -1 -i ${localFile} -vcodec copy -acodec copy -f flv '${rtmp_url}${
+      const ffmpegCmd = `ffmpeg -readrate 1 -stream_loop -1 -i ${localFile} -vcodec copy -acodec copy -f flv ${rtmp_url}${
         cdn === LiveRoomUseCDNEnum.no
           ? `?${SRS_CB_URL_PARAMS.publishKey}=${token}`
           : ''
-      }'`;
+      }`;
+      // const ffmpegCmd = "echo 'abc'"
       // const ffmpegSyncCmd = `${ffmpegCmd} 1>/dev/null 2>&1 &`;
       try {
         // WARN 使用execSync的话，命令最后需要添加：1>/dev/null 2>&1 &，否则会自动退出进程；
@@ -91,7 +92,19 @@ async function addLive({
         // 实际上本地还在推流，但是on_unpublish钩子删了live表里的直播记录，不合理。
         // execSync(ffmpegSyncCmd);
         // TIP 使用exec，这样命令后面不需要添加：1>/dev/null 2>&1 &，这样每次热更都会重新推流，而且不会触发on_unpublish钩子
-        exec(ffmpegCmd);
+
+        exec(ffmpegCmd, (error, stdout, stderr) => {
+          if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+          }
+          if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`);
+        });
+
         console.log(
           chalkSUCCESS(`FFmpeg推流成功！roomId：${live_room_id}`),
           ffmpegCmd
