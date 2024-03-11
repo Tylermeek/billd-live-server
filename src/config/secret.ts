@@ -72,7 +72,7 @@ export const MYSQL_CONFIG = {
   username: 'root',
   password:
     PROJECT_ENV === PROJECT_ENV_ENUM.development
-      ? '*********'
+      ? 'mysql123.'
       : '********************',
 }; // Mysql配置
 
@@ -100,9 +100,7 @@ export const REDIS_CONFIG = {
         : '***********',
   },
   username:
-    PROJECT_ENV === PROJECT_ENV_ENUM.development
-      ? 'billd_live_redis_test'
-      : '*************',
+    PROJECT_ENV === PROJECT_ENV_ENUM.development ? 'default' : '*************',
   password:
     PROJECT_ENV === PROJECT_ENV_ENUM.development
       ? '*********'
