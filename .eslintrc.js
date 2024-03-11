@@ -41,7 +41,6 @@ module.exports = {
         'no-console': 0, // 此规则不允许调用console对象的方法。
         'class-methods-use-this': 0, // 类方法如果不使用this的话会报错
         'global-require': 0, // 此规则要求所有调用require()都在模块的顶层，此规则在 ESLint v7.0.0中已弃用。请使用 中的相应规则eslint-plugin-node：https://github.com/mysticatea/eslint-plugin-node
-        'no-unused-vars': 0, // 禁止出现未使用过的变量
         'no-use-before-define': 0,
 
         'no-underscore-dangle': 1, // 此规则不允许在标识符中使用悬空下划线。
