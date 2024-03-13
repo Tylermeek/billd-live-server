@@ -607,3 +607,10 @@ export interface IMinuteData {
   updated_at?: string;
   deleted_at?: string;
 }
+
+export interface IWsRoom {
+  id: number;
+  name: string;
+  description: string;
+  // 其他房间属性...
+}

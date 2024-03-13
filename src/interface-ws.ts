@@ -72,6 +72,7 @@ export interface IWsFormat<T> {
   user_info?: IUser;
   /** 用户token */
   user_token?: string;
+  live_room_id: number;
   data: T;
 }
 
@@ -154,6 +155,7 @@ export type WsStartLiveType = IWsFormat<{
 
 /** 用户加入直播间 */
 export type WsJoinType = IWsFormat<{
+  live_room_id: number;
   socket_id: string;
   live_room: ILiveRoom;
   anchor_info?: IUser;

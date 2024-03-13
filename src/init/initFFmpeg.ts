@@ -52,7 +52,10 @@ async function addLive({
   let hls_url = '';
   let rtmp_url = '';
   let token = '';
+  console.log("test", live_room_id, PROJECT_ENV_ENUM.development, devFFmpeg, prodFFmpeg);
+
   async function main() {
+
     await liveService.deleteByLiveRoomId(live_room_id);
     // 开发环境时判断devFFmpeg，是true的才初始化ffmpeg
     // 生产环境时判断prodFFmpeg，是true的才初始化ffmpeg
@@ -60,6 +63,8 @@ async function addLive({
       (PROJECT_ENV === PROJECT_ENV_ENUM.development && devFFmpeg) ||
       (PROJECT_ENV === PROJECT_ENV_ENUM.prod && prodFFmpeg)
     ) {
+      console.log("cmd");
+
       // const ffmpegCmd = spawn(`ffmpeg`, [
       //   '-loglevel', // -loglevel quiet不输出log
       //   'quiet',
@@ -79,11 +84,10 @@ async function addLive({
       // ]);
       // const { pid } = ffmpegCmd;
       // console.log(chalkWARN('ffmpeg进程pid'), pid);
-      const ffmpegCmd = `ffmpeg -readrate 1 -stream_loop -1 -i ${localFile} -vcodec copy -acodec copy -f flv ${rtmp_url}${
-        cdn === LiveRoomUseCDNEnum.no
-          ? `?${SRS_CB_URL_PARAMS.publishKey}=${token}`
-          : ''
-      }`;
+      const ffmpegCmd = `ffmpeg -readrate 1 -stream_loop -1 -i ${localFile} -vcodec copy -acodec copy -f flv ${rtmp_url}${cdn === LiveRoomUseCDNEnum.no
+        ? `?${SRS_CB_URL_PARAMS.publishKey}=${token}`
+        : ''
+        }`;
       // const ffmpegCmd = "echo 'abc'"
       // const ffmpegSyncCmd = `${ffmpegCmd} 1>/dev/null 2>&1 &`;
       try {
@@ -95,6 +99,8 @@ async function addLive({
 
         exec(ffmpegCmd, (error, stdout, stderr) => {
           if (error) {
+            console.log("cmd");
+
             console.error(`Error: ${error.message}`);
             return;
           }
@@ -110,7 +116,7 @@ async function addLive({
           ffmpegCmd
         );
       } catch (error) {
-        console.log(chalkERROR(`FFmpeg推流错误！`), error);
+        // console.log(chalkERROR(`FFmpeg推流错误！`), error);
       }
     }
     await liveRoomService.update({
@@ -165,7 +171,9 @@ async function addLive({
 
   if (cdn === LiveRoomUseCDNEnum.no) {
     const liveRoomInfo = await liveRoomService.findKey(live_room_id);
-    token = liveRoomInfo!.key!;
+    console.log("liveRoomInfo", liveRoomInfo);
+
+    token = liveRoomInfo?.key!;
     rtmp_url = `${SERVER_LIVE.PushDomain}/${SERVER_LIVE.AppName}/roomId___${live_room_id}`;
     flv_url = `${SERVER_LIVE.PullDomain}/${SERVER_LIVE.AppName}/roomId___${live_room_id}.flv`;
     hls_url = `${SERVER_LIVE.PullDomain}/${SERVER_LIVE.AppName}/roomId___${live_room_id}.m3u8`;
@@ -223,6 +231,8 @@ export const initFFmpeg = async (init = true) => {
         })
       );
     });
+    console.log(queue);
+
     await Promise.all(queue);
     console.log(chalkSUCCESS(`初始化FFmpeg推流成功！`));
 

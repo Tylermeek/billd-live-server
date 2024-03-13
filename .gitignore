@@ -9,4 +9,5 @@ node_modules
 !/upload/README.md
 !/webm/README.md
 /docker/mysql/data/*
-/docker/**/*
+/docker/redis/data/*
+# /docker/**/*

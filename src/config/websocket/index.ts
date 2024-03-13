@@ -172,8 +172,7 @@ export const connectWebSocket = (server) => {
   }) {
     console.log(
       chalkINFO(
-        `${new Date().toLocaleString()},${
-          data.msg
+        `${new Date().toLocaleString()},${data.msg
         },socketId:${data.socketId!},roomId:${data.roomId!},ip:${data.ip!}`
       )
     );
@@ -189,7 +188,9 @@ export const connectWebSocket = (server) => {
 
     // 收到用户进入房间
     socket.on(WsMsgTypeEnum.join, async (data: WsJoinType) => {
-      const roomId = data.data.live_room.id;
+      console.log(data);
+
+      const roomId = data.data.live_room_id;
       prettierInfoLog({
         msg: '收到用户进入房间',
         socketId: socket.id,
@@ -221,7 +222,7 @@ export const connectWebSocket = (server) => {
       });
       liveRedisController.setUserJoinedRoom({
         socketId: data.socket_id,
-        joinRoomId: data.data.live_room.id!,
+        joinRoomId: data.data.live_room_id!,
         userInfo: data.user_info,
         client_ip: socket.handshake.address,
       });

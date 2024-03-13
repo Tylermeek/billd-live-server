@@ -36,8 +36,7 @@ export function newSequelize(db?) {
 }
 
 const msg = (flag: boolean) =>
-  `连接${MYSQL_CONFIG.host}:${MYSQL_CONFIG.port}服务器的${dbName}数据库${
-    flag ? '成功' : '失败'
+  `连接${MYSQL_CONFIG.host}:${MYSQL_CONFIG.port}服务器的${dbName}数据库${flag ? '成功' : '失败'
   }!`;
 
 const sequelize = newSequelize(dbName);
